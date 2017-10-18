@@ -16,11 +16,12 @@ export default class NewDeckView extends Component{
 			<KeyboardAvoidingView style={styles.container} behavior="padding">
 				<Text>What is the title of your new deck</Text>
 				<TextInput style={styles.TextInput}
-					onChangeText={(text) => this.setState({question: text})}
+					onChangeText={(text) => this.setState({title: text})}
 				/>
 				<TouchableOpacity style={styles.SubmitBtn}>
 					<Text style={styles.SubmitText} onPress={()=>this.handleSubmit(this.state.title)}>Submit</Text>
 				</TouchableOpacity>
+				<Text>{this.state.title}</Text>
 			</KeyboardAvoidingView>
 			)
 	}

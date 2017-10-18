@@ -6,6 +6,7 @@ export default class DeckListView extends Component{
 
 	componentDidMount(){
 		const decks = getDecks()
+		alert(decks)
 		this.setState({decks: decks})
 
 	}
