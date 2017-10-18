@@ -1,13 +1,26 @@
 import React, {Component} from 'react'
 import { View, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
 
-export default class NewDeckView extends Component{
+export default class NewQuestionView extends Component{
+   state={
+    question: '',
+    answer: ''
+  }
+
+  handleSubmit = () =>{
+    
+  }
+
 	render(){
 		return(
 			<KeyboardAvoidingView style={styles.container} behavior="padding">
-				<Text>What is the title of your new deck</Text>
-				<TextInput style={styles.TextInput} placeholder="Enter Your Question"/>
-        <TextInput style={styles.TextInput} placeholder="Enter Your Answer"/>
+				<Text>Enter your new card information below</Text>
+				<TextInput style={styles.TextInput} 
+          onChangeText={(text) => this.setState({question: text})}
+          placeholder="Enter Your Question"/>
+        <TextInput style={styles.TextInput} 
+          onChangeText={(text) => this.setState({answer:text})}
+          placeholder="Enter Your Answer"/>
 				<TouchableOpacity style={styles.SubmitBtn}>
 					<Text style={styles.SubmitText}>Submit</Text>
 				</TouchableOpacity>

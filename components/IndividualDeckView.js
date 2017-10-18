@@ -17,16 +17,17 @@ export default class IndividualDeckView extends Component{
 			<View style={styles.container}>
 				<Text> DeckName </Text>
 				<Text> Number of Cards </Text>
-				<TouchableOpacity
+				<TouchableOpacity style={styles.AddCardBtn}
+				 onPress={() => this.props.navigation.navigate(
+              		'NewQuestionView',	
+           	 		)}
+				>
+					<Text style={styles.AddCardText}>Add Card</Text>
+				</TouchableOpacity>
+				<TouchableOpacity style={styles.StartQuizBtn}
 				 onPress={() => this.props.navigation.navigate(
               		'QuizView',	
            	 		)}>
-				 <Text> Click me </Text>
-				</TouchableOpacity>
-				<TouchableOpacity style={styles.AddCardBtn}>
-					<Text style={styles.AddCardText}>Add Card</Text>
-				</TouchableOpacity>
-				<TouchableOpacity style={styles.StartQuizBtn}>
 					<Text style={styles.StartQuizText}>Start Quiz</Text>
 				</TouchableOpacity>
 			</View>

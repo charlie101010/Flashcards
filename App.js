@@ -7,6 +7,7 @@ import DeckListView from './components/DeckListView';
 import NewDeckView from './components/NewDeckView';
 import IndividualDeckView from './components/IndividualDeckView';
 import QuizView from './components/QuizView';
+import NewQuestionView from './components/NewQuestionView';
 
 
 const Tabs = TabNavigator({
@@ -60,7 +61,18 @@ const MainNavigator = StackNavigator({
         backgroundColor: '#000000',
       }
     }
-  }
+  },
+  NewQuestionView: {
+    screen: NewQuestionView,
+    navigationOptions: {
+      headerTintColor: "#ffffff",
+      title: "Add a New Question",
+      alignItem: 'center',
+      headerStyle: {
+        backgroundColor: '#000000',
+      }
+    }
+  },
 })
 
 export default class App extends Component {

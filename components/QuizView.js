@@ -3,6 +3,13 @@ import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-nativ
 
 
 export default class QuizView extends Component{
+  static navigationOptions = ({ navigation }) => {
+    // const { entryId } = navigation.state.params
+
+    return {
+      title: 'Deck Title'
+    }
+  }
 	render(){
 		return(
 			<View style={styles.container}>
