@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import { View, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
+import {addCardToDeck} from '../utils/api'
 
 export default class NewQuestionView extends Component{
    state={
@@ -7,8 +8,8 @@ export default class NewQuestionView extends Component{
     answer: ''
   }
 
-  handleSubmit = () =>{
-    
+  handleSubmit = (card) =>{
+    addCardToDeck(title, card)
   }
 
 	render(){
@@ -22,7 +23,7 @@ export default class NewQuestionView extends Component{
           onChangeText={(text) => this.setState({answer:text})}
           placeholder="Enter Your Answer"/>
 				<TouchableOpacity style={styles.SubmitBtn}>
-					<Text style={styles.SubmitText}>Submit</Text>
+					<Text style={styles.SubmitText} onPress={()=>this.handleSubmit({question: this.state.question, answer: this.state.answer})}>Submit</Text>
 				</TouchableOpacity>
 			</KeyboardAvoidingView>
 			)

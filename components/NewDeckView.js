@@ -9,7 +9,14 @@ export default class NewDeckView extends Component{
 
 	handleSubmit = (title) =>{
 		saveDeckTitle(title)
-	}
+		this.setState(() => ({
+            title: ''
+        }))
+        this.props.navigation.navigate(
+            'Home'
+        )
+    }
+	
 
 	render(){
 		return(
