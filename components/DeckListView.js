@@ -6,13 +6,13 @@ export default class DeckListView extends Component{
 
 	componentDidMount(){
 		const decks = getDecks()
-		alert(decks)
-		this.setState({decks: decks})
+		this.setState({decks})
+		alert("state", this.state)
 
 	}
 
 	state={
-		decks:''
+
 	}
 
 	render(){
