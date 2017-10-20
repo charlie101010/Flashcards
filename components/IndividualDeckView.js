@@ -7,7 +7,7 @@ export default class IndividualDeckView extends Component{
     // const { entryId } = navigation.state.params
 
     return {
-      title: this.props.navigation.state.params
+      title: navigation.state.params.title
     }
   }
 

@@ -22,7 +22,7 @@ export default class DeckListView extends Component{
 			return(
 				<View>
 					<Text>App is loading</Text>
-					<DeckListItem title={"Euclinden"} numOfCards={5}/>
+					<DeckListItem title={"Euclinden"} numOfCards={5} navigation={this.props.navigation}/>
 				</View>)
 		}
 		return(
