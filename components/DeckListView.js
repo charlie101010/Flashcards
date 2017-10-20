@@ -8,7 +8,7 @@ import { connect } from 'react-redux'
 class DeckListView extends Component{
 
 	componentDidMount(){
-		getDecks().then((decks) => this.props.setDecks(decks))	
+		getDecks().then((decks) => this.props.setDecks(decks))
 
 	}
 
@@ -18,7 +18,7 @@ class DeckListView extends Component{
 		if(!this.props.decks){
 			return(
 				<View>
-					<Text>App is loading</Text>
+					<Text>{this.props.decks}</Text>
 					<DeckListItem title={"Euclinden"} numOfCards={5} navigation={this.props.navigation}/>
 				</View>)
 		}
@@ -40,9 +40,9 @@ class DeckListView extends Component{
 }
 
 mapStateToProps = (state) => {
-	decks: state.decks
+	return {decks: state.decks}
 }
 
-export default connect(null, {setDecks})(DeckListView)
+export default connect(mapStateToProps, {setDecks})(DeckListView)
 
 
