@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { View, StyleSheet, Text, TouchableOpacity } from 'react-native'
 import {getDecks} from '../utils/api'
+import DeckListItem from '../components/DeckListItem'
 
 export default class DeckListView extends Component{
 
@@ -20,7 +21,8 @@ export default class DeckListView extends Component{
 		if(!this.state.decks){
 			return(
 				<View>
-				<Text>App is loading</Text>
+					<Text>App is loading</Text>
+					<DeckListItem title={"Euclinden"} numOfCards={5}/>
 				</View>)
 		}
 		return(
@@ -32,6 +34,7 @@ export default class DeckListView extends Component{
            	 		)}>
 				 <Text> Click me </Text>
 				</TouchableOpacity>
+				<DeckListItem title={"Euclinden"} numOfCards={5} />
 			</View>
 			)
 	}

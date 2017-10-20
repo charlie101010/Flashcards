@@ -7,7 +7,7 @@ export default class IndividualDeckView extends Component{
     // const { entryId } = navigation.state.params
 
     return {
-      title: 'Deck Title'
+      title: this.props.navigation.state.params
     }
   }
 
@@ -16,7 +16,7 @@ export default class IndividualDeckView extends Component{
 			
 			<View style={styles.container}>
 				<Text> DeckName </Text>
-				<Text> Number of Cards </Text>
+				<Text> Number of Cards</Text>
 				<TouchableOpacity style={styles.AddCardBtn}
 				 onPress={() => this.props.navigation.navigate(
               		'NewQuestionView',	
