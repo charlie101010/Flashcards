@@ -27,7 +27,6 @@ export function addCardToDeck (title, card) {
 
 
 export function saveDeckTitle (title) {
-		alert(title)
  	  return AsyncStorage.mergeItem( DECK_STORAGE_KEY, JSON.stringify({
         [title]: {
             title: title,

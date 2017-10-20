@@ -43,6 +43,6 @@ mapStateToProps = (state) => {
 	decks: state.decks
 }
 
-export default connect(mapStateToProps, {setDecks})(DeckListView)
+export default connect(null, {setDecks})(DeckListView)
 
 
