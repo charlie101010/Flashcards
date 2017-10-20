@@ -8,12 +8,10 @@ import { connect } from 'react-redux'
 class DeckListView extends Component{
 
 	componentDidMount(){
-		getDecks().then((decks)=>this.props.setDecks(decks))
-		
+		getDecks().then((decks) => this.props.setDecks({decks}))	
 
 	}
 
-	state={ }
 
 	render(){
 
@@ -41,12 +39,10 @@ class DeckListView extends Component{
 
 }
 
-mapStateToProps = (state) => {
-	decks: state.decks
-}
+// mapStateToProps = (state) => {
+// 	decks: state.decks
+// }
 
-export default connect(
-  mapStateToProps, {setDecks}
-)(DeckListView)
+export default connect(null, {setDecks})(DeckListView)
 
 

@@ -10,6 +10,8 @@ export default class QuizView extends Component{
       title: 'Deck Title'
     }
   }
+
+
 	render(){
 		return(
 			<View style={styles.container}>
@@ -24,6 +26,7 @@ export default class QuizView extends Component{
 				<TouchableOpacity style={styles.IncorrectBtn}>
 					<Text style={styles.IncorrectText}>Incorrect</Text>
 				</TouchableOpacity>
+  
 			</View>
 
 			)
