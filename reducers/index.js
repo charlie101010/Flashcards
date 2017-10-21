@@ -7,10 +7,10 @@ function decks (state = {}, action) {
     alert(action.decks)
       return {
         ...state,
-        ...action.decks
+        decks: action.decks
       }
     default:
-      return state
+      return state;
   }
 }
 

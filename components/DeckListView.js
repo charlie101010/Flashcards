@@ -18,7 +18,7 @@ class DeckListView extends Component{
 		if(!this.props.decks){
 			return(
 				<View>
-					<Text>{this.props.decks}</Text>
+					<Text>App loading</Text>
 					<DeckListItem title={"Euclinden"} numOfCards={5} navigation={this.props.navigation}/>
 				</View>)
 		}
