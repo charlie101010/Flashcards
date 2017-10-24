@@ -4,6 +4,7 @@ import {getDecks} from '../utils/api'
 import DeckListItem from '../components/DeckListItem'
 import { setDecks } from '../actions/index'
 import { connect } from 'react-redux'
+import _ from 'lodash'
 
 class DeckListView extends Component{
 
@@ -14,17 +15,19 @@ class DeckListView extends Component{
 
 
 	render(){
-
+		const {decks} = this.props
+		const decksArray = _.values(decks)
+		
 		if(!this.props.decks){
 			return(
 				<View>
 					<Text>App loading</Text>
-					<DeckListItem title={"Euclinden"} numOfCards={5} navigation={this.props.navigation}/>
+					<DeckListItem title={"Sample Title"} numOfCards={5} navigation={this.props.navigation}/>
 				</View>)
 		}
 		return(
 			<View>
-				<Text>{this.props.decks}</Text>
+				<Text>{decks}</Text>
 				<TouchableOpacity
 				 onPress={() => this.props.navigation.navigate(
               		'IndividualDeckView',	
@@ -32,7 +35,7 @@ class DeckListView extends Component{
 				 <Text> Click me </Text>
 				</TouchableOpacity>
 
-				<DeckListItem title={"Euclinden"} numOfCards={5} />
+				<DeckListItem title={"Sample Title"} numOfCards={5} />
 			</View>
 			)
 	}
