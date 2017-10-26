@@ -4,7 +4,7 @@ import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-nativ
 
 export default class IndividualDeckView extends Component{
 	static navigationOptions = ({ navigation }) => {
-    // const { entryId } = navigation.state.params
+   
 
     return {
       title: navigation.state.params.title
@@ -15,7 +15,7 @@ export default class IndividualDeckView extends Component{
 		return(
 			
 			<View style={styles.container}>
-				<Text> DeckName </Text>
+				<Text> {this.props.navigation.state.params.title} </Text>
 				<Text> Number of Cards</Text>
 				<TouchableOpacity style={styles.AddCardBtn}
 				 onPress={() => this.props.navigation.navigate(

@@ -7,7 +7,7 @@ export default class DeckListItem extends Component {
 
     render() {
         return (
-            <TouchableOpacity
+            <TouchableOpacity key={this.props.title}
                 onPress={() => this.props.navigation.navigate(
                             'IndividualDeckView',
                             { title: this.props.title }
