@@ -9,7 +9,11 @@ export default class NewQuestionView extends Component{
   }
 
   handleSubmit = (card) =>{
-    addCardToDeck(title, card)
+    addCardToDeck(this.props.navigation.state.params.title, card)
+     this.props.navigation.navigate(
+            'IndividualDeckView',
+            {title: this.props.navigation.state.params.title}
+        )
   }
 
 	render(){

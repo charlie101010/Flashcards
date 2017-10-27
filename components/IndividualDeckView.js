@@ -16,10 +16,11 @@ export default class IndividualDeckView extends Component{
 			
 			<View style={styles.container}>
 				<Text> {this.props.navigation.state.params.title} </Text>
-				<Text> Number of Cards</Text>
+				<Text> {this.props.navigation.state.params.numOfCards} cards</Text>
 				<TouchableOpacity style={styles.AddCardBtn}
 				 onPress={() => this.props.navigation.navigate(
-              		'NewQuestionView',	
+              		'NewQuestionView',
+              		{title: this.props.navigation.state.params.title}	
            	 		)}
 				>
 					<Text style={styles.AddCardText}>Add Card</Text>
@@ -27,6 +28,7 @@ export default class IndividualDeckView extends Component{
 				<TouchableOpacity style={styles.StartQuizBtn}
 				 onPress={() => this.props.navigation.navigate(
               		'QuizView',	
+              		{title: this.props.navigation.state.params.title}
            	 		)}>
 					<Text style={styles.StartQuizText}>Start Quiz</Text>
 				</TouchableOpacity>

@@ -20,7 +20,7 @@ class DeckListView extends Component {
   render() {
     const decks = JSON.parse(this.props.decks|| null) || {};
     const titles = Object.keys(decks || {});
-    const items = titles.map(i => <Text key={i}>  {i} </Text>);
+  
 
 
     if (!this.props.decks) {
@@ -36,9 +36,9 @@ class DeckListView extends Component {
       );
     }
     return (
-      <View>
+      <View style={styles.container}>
         {titles.map(i =>(
-        <DeckListItem title={i} numOfCards={5} navigation={this.props.navigation}/>
+        <DeckListItem title={i} numOfCards={decks[i].questions.length} navigation={this.props.navigation}/>
     	))}
       </View>
     );
@@ -48,6 +48,12 @@ class DeckListView extends Component {
 mapStateToProps = state => {
   return {decks: state.decks};
 };
+
+const styles = StyleSheet.create({
+  container: {
+  	flex: 1,
+  	},
+  })
 
 export default connect(mapStateToProps, {setDecks})(DeckListView);
 
