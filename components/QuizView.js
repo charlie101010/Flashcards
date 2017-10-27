@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
+import {connect} from 'react-redux';
+import {getDeck} from '../utils/api';
 
 
-export default class QuizView extends Component{
+class QuizView extends Component{
   static navigationOptions = ({ navigation }) => {
 
     return {
@@ -10,15 +12,19 @@ export default class QuizView extends Component{
     }
   }
 
+  state={
+
+    currentQuestion: 1,
+    correctAnswers: 0
+
+  }
+
 
 	render(){
 		return(
 			<View style={styles.container}>
-				<Text> Question Number</Text>
-				<Text> Question </Text>
-        <TouchableOpacity>
-          <Text style={styles.IncorrectText}>Correct</Text>
-        </TouchableOpacity>
+				<Text> {this.state.currentQuestion}</Text>
+				<Text>  </Text>
 				<TouchableOpacity style={styles.CorrectBtn}>
 					<Text style={styles.CorrectText}>Correct</Text>
 				</TouchableOpacity>
@@ -32,6 +38,20 @@ export default class QuizView extends Component{
 	 }
 
 }
+
+mapStateToProps = (state, ownProps) =>{
+    const { title } = ownProps.navigation.state.params;
+    alert(JSON.stringify(state.decks))
+
+    return {
+        deck: state.decks[title]
+    }
+}
+
+
+
+
+export default connect(mapStateToProps)(QuizView);
 
 
 const styles = StyleSheet.create({
@@ -70,3 +90,4 @@ const styles = StyleSheet.create({
   	height: 40,
   },
 })
+

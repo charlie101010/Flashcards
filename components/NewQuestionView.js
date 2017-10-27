@@ -8,12 +8,12 @@ export default class NewQuestionView extends Component{
     answer: ''
   }
 
-  handleSubmit = (card) =>{
-    addCardToDeck(this.props.navigation.state.params.title, card)
+  handleSubmit = () =>{
+    addCardToDeck(this.props.navigation.state.params.title, {question: this.state.question, answer: this.state.answer}).then(
      this.props.navigation.navigate(
             'IndividualDeckView',
             {title: this.props.navigation.state.params.title}
-        )
+        ))
   }
 
 	render(){
@@ -24,10 +24,10 @@ export default class NewQuestionView extends Component{
           onChangeText={(text) => this.setState({question: text})}
           placeholder="Enter Your Question"/>
         <TextInput style={styles.TextInput} 
-          onChangeText={(text) => this.setState({answer:text})}
+          onChangeText={(text) => this.setState({answer: text})}
           placeholder="Enter Your Answer"/>
 				<TouchableOpacity style={styles.SubmitBtn}>
-					<Text style={styles.SubmitText} onPress={()=>this.handleSubmit({question: this.state.question, answer: this.state.answer})}>Submit</Text>
+					<Text style={styles.SubmitText} onPress={()=>this.handleSubmit()}>Submit</Text>
 				</TouchableOpacity>
 			</KeyboardAvoidingView>
 			)

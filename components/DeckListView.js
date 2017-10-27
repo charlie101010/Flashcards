@@ -38,7 +38,7 @@ class DeckListView extends Component {
     return (
       <View style={styles.container}>
         {titles.map(i =>(
-        <DeckListItem title={i} numOfCards={decks[i].questions.length} navigation={this.props.navigation}/>
+        <DeckListItem key={i} title={i} numOfCards={decks[i].questions.length} navigation={this.props.navigation}/>
     	))}
       </View>
     );

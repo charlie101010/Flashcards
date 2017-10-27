@@ -18,12 +18,12 @@ export function getDeck (id) {
 }
 
 export function addCardToDeck(title, card) {
-  return AsyncStorage.getItem(DECK_STORAGE_KEY).then(results => {
-    const data = JSON.parse(results || null) || {};
-    data[title] = data[title] || {};
-    data[title]['questions'] = {...data['title']['questions'], card};
-    return AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
-  });
+    return AsyncStorage.getItem(DECK_STORAGE_KEY)
+        .then(result => {
+            const data = JSON.parse(result);
+            data[title].questions.push(card);
+            AsyncStorage.setItem(DECK_STORAGE_KEY, JSON.stringify(data));
+        })
 }
 
 export function saveDeckTitle (title) {
