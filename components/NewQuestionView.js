@@ -11,12 +11,12 @@ class NewQuestionView extends Component{
   }
 
   handleSubmit = () =>{
-    addCardToDeck(this.props.navigation.state.params.title, {question: this.state.question, answer: this.state.answer})
+    addCardToDeck(this.props.navigation.state.params.title, {question: this.state.question, answer: this.state.answer}).then(()=>{
     this.props.addCard(this.props.navigation.state.params.title, {question: this.state.question, answer: this.state.answer})
     this.props.navigation.navigate(
             'IndividualDeckView',
             {title: this.props.navigation.state.params.title}
-        )
+        )})
   }
 
 	render(){
