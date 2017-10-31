@@ -15,36 +15,120 @@ class QuizView extends Component{
   state={
 
     currentQuestion: 1,
-    correctAnswers: 0
+    correctAnswers: 0,
+    showAnswer: false
 
   }
 
+  correctAnswer = () =>{
+     this.setState({
+              correctAnswers: this.state.correctAnswers + 1,
+              currentQuestion: this.state.currentQuestion + 1,
+              showAnswer: false
+            })
+  }
+
+  incorrectAnswer = () =>{
+    this.setState({
+              currentQuestion: this.state.currentQuestion + 1,
+              showAnswer: false
+            })
+  }
+
+
+
 
 	render(){
+
+  const numOfQuestions = this.props.deck.questions.length
+
+  if(this.state.currentQuestion <= numOfQuestions){
 		return(
 			<View style={styles.container}>
-				<Text> {this.state.currentQuestion}</Text>
-				<Text>  </Text>
-				<TouchableOpacity style={styles.CorrectBtn}>
+      <View>
+        <Text>How many questions: {numOfQuestions}</Text>
+				<Text>You are on question number: {this.state.currentQuestion}</Text>
+        <Text>You have answered {this.state.correctAnswers} questions correctly </Text>
+      </View>
+      {!this.state.showAnswer
+        ?
+        <View style={styles.answerGroup}>
+				<Text style={styles.questionText}>{this.props.deck.questions[this.state.currentQuestion-1].question} </Text>
+        <TouchableOpacity
+            onPress={()=>this.setState({
+              showAnswer: true
+            })}
+        >
+          <Text style={styles.Answer}>Answer</Text>
+        </TouchableOpacity>
+				<TouchableOpacity style={styles.CorrectBtn}
+          onPress={()=>this.correctAnswer()
+           
+        }
+        >
 					<Text style={styles.CorrectText}>Correct</Text>
 				</TouchableOpacity>
-				<TouchableOpacity style={styles.IncorrectBtn}>
+				<TouchableOpacity style={styles.IncorrectBtn}
+         onPress={()=>this.incorrectAnswer()
+            
+        }
+        >
 					<Text style={styles.IncorrectText}>Incorrect</Text>
 				</TouchableOpacity>
+
+        </View>
+
+         :
+         <View style={styles.answerGroup}>
+
+          <Text style={styles.questionText}>{this.props.deck.questions[this.state.currentQuestion-1].answer} </Text>
+        <TouchableOpacity
+         onPress={()=>this.setState({
+              showAnswer: false
+            })}
+        >
+          <Text style={styles.Answer}>Question</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.CorrectBtn}
+         onPress={()=>this.correctAnswer()}
+         >
+          <Text style={styles.CorrectText}>Correct</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.IncorrectBtn}
+        onPress={()=>this.incorrectAnswer()}
+        >
+          <Text style={styles.IncorrectText}>Incorrect</Text>
+        </TouchableOpacity>
+
+        </View>
+         
+
+       }
+
+
   
 			</View>
 
 			)
-	 }
+	   }
+    else{
+      return(
+      <View style={styles.answerGroup}>
+        <Text>You got {this.state.correctAnswers} correct answers out of {numOfQuestions} questions</Text>
+      </View>
+      )
+    }
+  }
 
 }
 
 mapStateToProps = (state, ownProps) =>{
     const { title } = ownProps.navigation.state.params;
-    alert(JSON.stringify(state.decks))
 
     return {
-        deck: state.decks[title]
+ 
+        deck: JSON.parse(state.decks)[title]
+
     }
 }
 
@@ -57,7 +141,16 @@ export default connect(mapStateToProps)(QuizView);
 const styles = StyleSheet.create({
   container: {
   	flex: 1,
-    justifyContent: 'center',
+  },
+  answerGroup: {
+    flex: 1,
+    justifyContent: "center"
+  },
+  questionText: {
+    alignItems: "center",
+    fontSize: 20,
+    fontWeight: "bold"
+
   },
    CorrectBtn: {
     backgroundColor: '#008000',
@@ -82,8 +175,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  IncorrectText:{
-  	color: '#ffffff',
+  Answer:{
+  	color: '#FF0000',
+    fontSize: 16
   },
   TextInput:{
   	borderRadius: 5,

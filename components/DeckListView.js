@@ -11,7 +11,10 @@ class DeckListView extends Component {
    
       getDecks().then(decks => {
         this.props.setDecks(decks);
+       
       });
+
+
 
      }
     

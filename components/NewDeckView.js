@@ -1,14 +1,17 @@
 import React, {Component} from 'react'
 import { View, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
 import {saveDeckTitle} from '../utils/api'
+import {newDeck} from '../actions/index';
+import {connect} from 'react-redux';
 
-export default class NewDeckView extends Component{
+class NewDeckView extends Component{
 	state={
 		title:''
 	}
 
 	handleSubmit = (title) =>{
 		saveDeckTitle(title)
+		this.props.newDeck(title)
 		this.setState(() => ({
             title: ''
         }))
@@ -60,3 +63,6 @@ const styles = StyleSheet.create({
   	height: 40,
   }
 })
+
+
+export default connect(null, {newDeck})(NewDeckView);

@@ -1,19 +1,22 @@
 import React, {Component} from 'react'
 import { View, KeyboardAvoidingView, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
 import {addCardToDeck} from '../utils/api'
+import {addCard} from '../actions/index';
+import {connect} from 'react-redux';
 
-export default class NewQuestionView extends Component{
+class NewQuestionView extends Component{
    state={
     question: '',
     answer: ''
   }
 
   handleSubmit = () =>{
-    addCardToDeck(this.props.navigation.state.params.title, {question: this.state.question, answer: this.state.answer}).then(
-     this.props.navigation.navigate(
+    addCardToDeck(this.props.navigation.state.params.title, {question: this.state.question, answer: this.state.answer})
+    this.props.addCard(this.props.navigation.state.params.title, {question: this.state.question, answer: this.state.answer})
+    this.props.navigation.navigate(
             'IndividualDeckView',
             {title: this.props.navigation.state.params.title}
-        ))
+        )
   }
 
 	render(){
@@ -60,3 +63,5 @@ const styles = StyleSheet.create({
   	height: 40,
   }
 })
+
+export default connect(null, {addCard})(NewQuestionView)
