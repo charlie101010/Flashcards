@@ -4,6 +4,7 @@ import _ from 'lodash'
 function decks (state = {}, action) {
   switch (action.type) {
     case SET_DECKS:
+    alert(JSON.stringify(action.decks))
       return {
         ...state,
         decks: action.decks
@@ -11,20 +12,19 @@ function decks (state = {}, action) {
       case NEW_DECK:
       return {
         ...state,
-       [action.title]: {
-            title: action.title,
-            questions: []
+        ...action.deck
         }
-      }
-    case ADD_CARD:
-    const title = action.title 
-    const editedDeck = state[decks][title]
-    editedDeck.questions.push({question: action.question, answer: action.answer})
-      return {
-         ...state,
-         editedDeck
-        }
-
+        
+     case ADD_CARD:
+      const title = action.title;
+      const newState = {...state};
+      // if empty I am assigning a initial state for the title
+      newState[title] = newState[title] || {questions: [], title};
+      newState[title].questions.push({
+        question: action.question,
+        answer: action.answer,
+      });
+      return newState;
     default:
       return state;
   }

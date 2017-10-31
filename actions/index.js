@@ -18,9 +18,9 @@ export const addCard = (title, card) => {
 	};
 }
 
-export function newDeck ( title ) {
+export function newDeck ( deck ) {
     return {
         type: NEW_DECK,
-        title
+        deck
     }
 }

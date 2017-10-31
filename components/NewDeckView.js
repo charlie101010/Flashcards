@@ -9,16 +9,16 @@ class NewDeckView extends Component{
 		title:''
 	}
 
-	handleSubmit = (title) =>{
-		saveDeckTitle(title)
-		this.props.newDeck(title)
-		this.setState(() => ({
-            title: ''
-        }))
-        this.props.navigation.navigate(
-            'Home'
-        )
-    }
+
+   handleSubmit = title => {
+    saveDeckTitle(title).then(() => {
+      this.props.newDeck({ [this.state.title] : {title : this.state.title, questions : []} });
+      this.props.navigation.navigate('Home');
+      this.setState(() => ({
+        title: '',
+      }));
+    });
+  };
 	
 
 	render(){
@@ -28,8 +28,9 @@ class NewDeckView extends Component{
 				<TextInput style={styles.TextInput}
 					onChangeText={(text) => this.setState({title: text})}
 				/>
-				<TouchableOpacity style={styles.SubmitBtn}>
-					<Text style={styles.SubmitText} onPress={()=>this.handleSubmit(this.state.title)}>Submit</Text>
+				<TouchableOpacity style={styles.SubmitBtn}
+				onPress={()=>this.handleSubmit(this.state.title)}>
+					<Text style={styles.SubmitText}>Submit</Text>
 				</TouchableOpacity>
 				<Text>{this.state.title}</Text>
 			</KeyboardAvoidingView>

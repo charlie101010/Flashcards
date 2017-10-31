@@ -1,8 +1,10 @@
 import React, {Component} from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
+import {setDecks} from '../actions/index';
+import {connect} from 'react-redux'
+import {getDecks} from '../utils/api';
 
-
-export default class IndividualDeckView extends Component{
+class IndividualDeckView extends Component{
 	static navigationOptions = ({ navigation }) => {
    
 
@@ -11,12 +13,18 @@ export default class IndividualDeckView extends Component{
     }
   }
 
+  componentDidMount(){
+  	 alert(this.props.decks)
+  }
+
 	render(){
+		 const decks = JSON.parse(this.props.decks|| null) || {};
+
 		return(
 			
 			<View style={styles.container}>
 				<Text> {this.props.navigation.state.params.title} </Text>
-				<Text> {this.props.navigation.state.params.numOfCards} cards</Text>
+				<Text> {decks[this.props.navigation.state.params.title].questions.length} cards</Text>
 				<TouchableOpacity style={styles.AddCardBtn}
 				 onPress={() => this.props.navigation.navigate(
               		'NewQuestionView',
@@ -39,6 +47,12 @@ export default class IndividualDeckView extends Component{
 
 
 }
+
+mapStateToProps = state => {
+  return {decks: state.decks};
+};
+
+export default connect(mapStateToProps)(IndividualDeckView)
 
 
 const styles = StyleSheet.create({
