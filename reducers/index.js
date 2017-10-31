@@ -4,7 +4,6 @@ import _ from 'lodash'
 function decks (state = {}, action) {
   switch (action.type) {
     case SET_DECKS:
-    alert(JSON.stringify(action.decks))
       return {
         ...state,
         decks: action.decks
@@ -25,6 +24,7 @@ function decks (state = {}, action) {
         answer: action.answer,
       });
       return newState;
+
     default:
       return state;
   }

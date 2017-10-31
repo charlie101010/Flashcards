@@ -32,7 +32,6 @@ class NewDeckView extends Component{
 				onPress={()=>this.handleSubmit(this.state.title)}>
 					<Text style={styles.SubmitText}>Submit</Text>
 				</TouchableOpacity>
-				<Text>{this.state.title}</Text>
 			</KeyboardAvoidingView>
 			)
 	}

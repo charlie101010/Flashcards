@@ -14,7 +14,7 @@ class IndividualDeckView extends Component{
   }
 
   componentDidMount(){
-  	 alert(this.props.decks)
+  	// this.props.setDecks(this.props.decks)
   }
 
 	render(){

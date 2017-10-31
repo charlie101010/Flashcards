@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, ScrollView, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {getDecks, addCardToDeck} from '../utils/api';
 import DeckListItem from '../components/DeckListItem';
 import {setDecks} from '../actions/index';
@@ -11,7 +11,7 @@ class DeckListView extends Component {
    
       getDecks().then(decks => {
         this.props.setDecks(decks);
-       
+
       });
 
 
@@ -39,11 +39,11 @@ class DeckListView extends Component {
       );
     }
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {titles.map(i =>(
         <DeckListItem key={i} title={i} numOfCards={decks[i].questions.length} navigation={this.props.navigation}/>
     	))}
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -54,7 +54,7 @@ mapStateToProps = state => {
 
 const styles = StyleSheet.create({
   container: {
-  	flex: 1,
+  	 paddingVertical: 20
   	},
   })
 
