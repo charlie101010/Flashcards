@@ -18,7 +18,7 @@ function decks (state = {}, action) {
       }
     case ADD_CARD:
     const title = action.title 
-    const editedDeck = state.decks[title]
+    const editedDeck = state[decks][title]
     editedDeck.questions.push({question: action.question, answer: action.answer})
       return {
          ...state,

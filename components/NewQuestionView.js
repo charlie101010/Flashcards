@@ -29,8 +29,10 @@ class NewQuestionView extends Component{
         <TextInput style={styles.TextInput} 
           onChangeText={(text) => this.setState({answer: text})}
           placeholder="Enter Your Answer"/>
-				<TouchableOpacity style={styles.SubmitBtn}>
-					<Text style={styles.SubmitText} onPress={()=>this.handleSubmit()}>Submit</Text>
+				<TouchableOpacity style={styles.SubmitBtn}
+        onPress={()=>this.handleSubmit()}
+        >
+					<Text style={styles.SubmitText} >Submit</Text>
 				</TouchableOpacity>
 			</KeyboardAvoidingView>
 			)
