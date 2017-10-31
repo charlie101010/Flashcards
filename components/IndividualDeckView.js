@@ -18,7 +18,7 @@ class IndividualDeckView extends Component{
   }
 
 	render(){
-		 const decks = JSON.parse(this.props.decks|| null) || {};
+		 const decks = this.props.decks
 
 		return(
 			
@@ -48,8 +48,8 @@ class IndividualDeckView extends Component{
 
 }
 
-mapStateToProps = state => {
-  return {decks: state.decks};
+mapStateToProps = (state) => {
+  return {decks: state};
 };
 
 export default connect(mapStateToProps)(IndividualDeckView)

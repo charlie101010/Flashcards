@@ -6,13 +6,14 @@ function decks (state = {}, action) {
     case SET_DECKS:
       return {
         ...state,
-        decks: action.decks
+        ...action.decks
       }
       case NEW_DECK:
+
       return {
         ...state,
         ...action.deck
-        }
+      }
         
      case ADD_CARD:
       const title = action.title;

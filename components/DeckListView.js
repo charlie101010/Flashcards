@@ -21,7 +21,7 @@ class DeckListView extends Component {
   
 
   render() {
-    const decks = JSON.parse(this.props.decks|| null) || {};
+    const decks = this.props.decks
     const titles = Object.keys(decks || {});
   
 
@@ -49,7 +49,7 @@ class DeckListView extends Component {
 }
 
 mapStateToProps = state => {
-  return {decks: state.decks};
+  return {decks: state};
 };
 
 const styles = StyleSheet.create({

@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-native'
 import {connect} from 'react-redux';
 import {getDeck} from '../utils/api';
-import FlipCard from 'react-native-flip-card';
+import FlipCard from 'react-native-flip-card'
 
 
 class QuizView extends Component{
@@ -45,7 +45,6 @@ class QuizView extends Component{
 
   if(this.state.currentQuestion <= numOfQuestions){
 		return(
-      
 			<View style={styles.container}>
       <View>
         <Text>How many questions: {numOfQuestions}</Text>
@@ -129,7 +128,7 @@ mapStateToProps = (state, ownProps) =>{
 
     return {
  
-        deck: JSON.parse(state.decks)[title]
+        deck: state[title]
 
     }
 }
