@@ -4,10 +4,10 @@ import { AsyncStorage } from 'react-native'
 const DECK_STORAGE_KEY = 'Flashcards'
 
 
-export function getDecks () {
- return AsyncStorage.getItem(DECK_STORAGE_KEY, (result) => {
-	    return JSON.parse(result)
-  })
+export function getDecks() {
+  return AsyncStorage.getItem(DECK_STORAGE_KEY).then(result => {
+    return JSON.parse(result);
+  });
 }
 export function getDeck (id) {
   	return AsyncStorage.getItem(DECK_STORAGE_KEY).then((results)=>{

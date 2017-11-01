@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, TouchableOpacity, TextInput } from 'react-nativ
 import {connect} from 'react-redux';
 import {getDeck} from '../utils/api';
 import FlipCard from 'react-native-flip-card'
+import { setLocalNotification, clearLocalNotification } from '../utils/notifications'
 
 
 class QuizView extends Component{
@@ -113,6 +114,8 @@ class QuizView extends Component{
 			)
 	   }
     else{
+            clearLocalNotification()
+                .then(setLocalNotification())
       return(
       <View style={styles.answerGroup}>
         <Text>You got {this.state.correctAnswers} correct answers out of {numOfQuestions} questions</Text>
