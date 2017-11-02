@@ -2,6 +2,11 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
 
+## Starting the Application
+
+In order to run this application, you should first `npm install` in order to download all libraries & dependencies.  This app should be run using Expo on a virtual device.  Once you have installed the dependencies, run `npm start` to launch the application.  This will prompt a list of options in the Command Line.  You can choose whether you'd like to run the simulator on Android or iOS (or both).
+
+
 ## Table of Contents
 
 * [Updating to New Releases](#updating-to-new-releases)
