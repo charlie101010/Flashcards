@@ -13,7 +13,10 @@ class NewDeckView extends Component{
    handleSubmit = title => {
     saveDeckTitle(title).then(() => {
       this.props.newDeck({ [this.state.title] : {title : this.state.title, questions : []} });
-      this.props.navigation.navigate('Home');
+      this.props.navigation.navigate('IndividualDeckView',
+      	{ title: this.state.title,
+          numOfCards: 0 },
+                        );
       this.setState(() => ({
         title: '',
       }));

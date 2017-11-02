@@ -119,6 +119,19 @@ class QuizView extends Component{
       return(
       <View style={styles.answerGroup}>
         <Text>You got {this.state.correctAnswers} correct answers out of {numOfQuestions} questions</Text>
+         <TouchableOpacity style={styles.restart}
+         onPress={()=>this.props.navigation.navigate('QuizView',
+         {title: this.props.navigation.state.params.title})}
+         >
+          <Text style={styles.blackText}>Restart Quiz</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.returnToDeck}
+        onPress={()=>this.props.navigation.navigate('IndividualDeckView',
+         {title: this.props.navigation.state.params.title})}
+        >
+          <Text style={styles.CorrectText}>Return to Deck</Text>
+        </TouchableOpacity>
+
       </View>
       )
     }
@@ -169,6 +182,9 @@ const styles = StyleSheet.create({
   CorrectText:{
   	color: '#ffffff',
   },
+  blackText:{
+    color: '#000000',
+  },
   IncorrectBtn: {
     backgroundColor: '#FF0000',
     padding: 10,
@@ -186,6 +202,29 @@ const styles = StyleSheet.create({
   TextInput:{
   	borderRadius: 5,
   	height: 40,
+  },
+   restart:{
+    backgroundColor: '#ffffff',
+    padding: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    height: 45,
+    borderWidth: 3,
+    borderColor: '#000000',
+    borderStyle: 'solid',
+    borderRadius: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  returnToDeck:{
+    backgroundColor: '#000000',
+    padding: 10,
+    paddingLeft: 30,
+    paddingRight: 30,
+    height: 45,
+    borderRadius: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 })
 
